@@ -33,7 +33,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 rel="noopener noreferrer"
                 className="inline-block text-lg md:text-xl font-bold text-white bg-[#d97f72] hover:bg-[#c46d61] px-6 py-3 rounded-lg shadow transition-all"
               >
-                立即報名銀髮健身俱樂部，邁向樂活人生 💪
+                立即報名銀髮健身俱樂部<br />邁向樂活人生 💪
               </a>
             </div>
           </main>

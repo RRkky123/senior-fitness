@@ -87,7 +87,7 @@ export default function FormPage() {
 
     // 資料寫入 FormSubmit
     try {
-      const res = await fetch("https://formsubmit.co/ajax/cux1648@gmail.com", {
+      const res = await fetch("https://formsubmit.co/ajax/9a69d62c142a33e72ea439ab0fe6a502", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
