@@ -1,13 +1,3 @@
-// app/page.tsx
-"use client";
-
-import { redirect } from "next/navigation";
-
-export default function Home() {
-  redirect("/form");
-}
-
-// app/form/page.tsx
 "use client";
 
 import { useState } from "react";
@@ -95,14 +85,20 @@ export default function FormPage() {
     setSections({ focus, frequency, caution });
     setAiMessage(gptExplanation);
 
+    // 資料寫入 FormSubmit
     try {
-      const res = await fetch("https://script.google.com/macros/s/AKfycbyUiYNNO7kZTHJwT5r04nfPhsJVH3yhmRmh0aDdVFLepoY1pz1A6H91V1DshUqs4gYzpw/exec", {
+      const res = await fetch("https://formsubmit.co/ajax/cux1648@gmail.com", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json"
+        },
         body: JSON.stringify(formData)
       });
-      setSubmitStatus(res.ok ? "✅ 已儲存資料！" : "⚠️ 儲存失敗");
-    } catch {
+      const result = await res.json();
+      setSubmitStatus(result.success ? "✅ 已送出表單至信箱！" : "⚠️ 送出失敗");
+    } catch (error) {
+      console.error(error);
       setSubmitStatus("⚠️ 發生錯誤，請稍後再試");
     }
   };
