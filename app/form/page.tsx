@@ -1,3 +1,13 @@
+// app/page.tsx
+"use client";
+
+import { redirect } from "next/navigation";
+
+export default function Home() {
+  redirect("/form");
+}
+
+// app/form/page.tsx
 "use client";
 
 import { useState } from "react";
@@ -86,12 +96,11 @@ export default function FormPage() {
     setAiMessage(gptExplanation);
 
     try {
-      const res = await fetch("https://script.google.com/macros/s/AKfycbwWnVbegIHGWxL_yznHvbbr_WAAMF19Qm5N-Tt-XPj94BtRGCLhvPd9S0oh6b5CV5CWrA/exec", {
+      const res = await fetch("https://script.google.com/macros/s/AKfycbyUiYNNO7kZTHJwT5r04nfPhsJVH3yhmRmh0aDdVFLepoY1pz1A6H91V1DshUqs4gYzpw/exec", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData)
       });
-
       setSubmitStatus(res.ok ? "✅ 已儲存資料！" : "⚠️ 儲存失敗");
     } catch {
       setSubmitStatus("⚠️ 發生錯誤，請稍後再試");
